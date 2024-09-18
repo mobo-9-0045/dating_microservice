@@ -11,6 +11,8 @@ import { ProjectModule } from './project/project.module';
 import { Project } from './project/project.entity';
 import { Skill } from './skills/skill.entity';
 import { SkillModule } from './skills/skill.module';
+import { Certificat } from './certificat/certificat.entity';
+import { CertificatModule } from './certificat/certificat.module';
 
 
 @Module({
@@ -25,13 +27,14 @@ import { SkillModule } from './skills/skill.module';
       database: 'postgresql',
       username: 'mobo',
       password: '5500',
-      entities: [User, Project, Skill],
+      entities: [User, Project, Skill, Certificat],
       synchronize: true,
     }),
     UsersModule,
     AuthModule,
     ProjectModule,
     SkillModule,
+    CertificatModule,
   ],
   controllers: [AppController],
   providers: [AppService],

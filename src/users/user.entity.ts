@@ -1,3 +1,4 @@
+import { Certificat } from 'src/certificat/certificat.entity';
 import { Project } from 'src/project/project.entity';
 import { Skill } from 'src/skills/skill.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
@@ -33,4 +34,7 @@ export class User {
 
   @OneToMany(() => Skill, (skill) => skill.user, {nullable: true})
   skills: Skill[];
+
+  @OneToMany(() => Certificat, (certificat) => certificat.user, {nullable: true})
+  certificats: Certificat[];
 }
