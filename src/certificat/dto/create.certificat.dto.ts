@@ -1,5 +1,5 @@
 export class CreateCertificatDto{
     certificatName: string;
-    certificatDesciption: string;
+    certificatDescription: string;
     userid: number;
 }

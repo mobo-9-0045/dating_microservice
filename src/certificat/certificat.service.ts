@@ -18,12 +18,12 @@ export class CertificatService {
         try{
             const certificat = new Certificat();
             certificat.certificatName = createCertificatDto.certificatName;
-            certificat.certificatDescriptio = createCertificatDto.certificatDesciption;
+            certificat.certificatDescription = createCertificatDto.certificatDescription;
             certificat.user = user;
             return await this.certificatRepository.save(certificat);
         }
         catch(error){
-            throw new Error('Error occured during certificate creation');
+            throw new Error(`Error occured during certificate creation: ${error}`);
         }
     }
 
@@ -46,14 +46,17 @@ export class CertificatService {
 
     async deleteCertificat(id: number, user:User): Promise<Certificat | null>{
         try{
-            const certificat = await this.certificatRepository.findOne({where: {id}})
+            const certificat = await this.certificatRepository.findOne({
+                where: {id},
+                relations: ['user'],
+            })
             if (certificat?.user.id == user.id){
                 return await this.certificatRepository.remove(certificat);
             }
             return null
         }
         catch(error){
-            throw new Error('Error occured during certificat delet');
+            throw new Error(`Error occured during certificate delete: ${error}`);
         }
     }
 }

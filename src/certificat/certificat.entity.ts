@@ -10,7 +10,7 @@ export class Certificat{
     certificatName: string
 
     @Column({nullable: false})
-    certificatDescriptio: string
+    certificatDescription: string
 
     @ManyToOne(() => User , (user) => user.certificats)
     user: User;

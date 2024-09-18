@@ -1,3 +1,4 @@
+import { Certificat } from "src/certificat/certificat.entity";
 import { Project } from "src/project/project.entity";
 import { Skill } from "src/skills/skill.entity";
 
@@ -8,4 +9,5 @@ export class ResponseUserDto{
     isActive: boolean;
     projects: Project[];
     skills: Skill[];
+    certificats: Certificat[];
 }
