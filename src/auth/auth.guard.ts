@@ -13,7 +13,7 @@ export class AuthGuarde implements CanActivate{
             throw new UnauthorizedException();
         }
         try{
-            const jwtSecKey: string = "JWT SUPER SECRET";
+            const jwtSecKey: string | undefined = process.env.JWTSUPPERSECRETKEY;
             const payload = await this.jawtService.verify(
                 token,
                 {

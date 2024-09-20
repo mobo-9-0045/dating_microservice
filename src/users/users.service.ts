@@ -23,7 +23,7 @@ export class UsersService{
     async findOneById(id: number): Promise<ResponseUserDto | null>{
         const user = await this.userRepository.findOne({
             where: { id },
-            relations: ['projects', 'skills', 'certificats'],
+            relations: ['projects', 'skills', 'certificats', 'hobbies'],
         });
         if (user){
             const userDto: ResponseUserDto = {
@@ -34,6 +34,7 @@ export class UsersService{
                 projects: user.projects,
                 skills: user.skills,
                 certificats: user.certificats,
+                hobbies: user.hobbies,
             }
             return userDto;
         }
@@ -61,7 +62,7 @@ export class UsersService{
     async update(id: number, updateUserDto: UpdateUserDto): Promise<ResponseUserDto | null>{
         const user = await this.userRepository.findOne({
             where: { id },
-            relations: ['projects', 'skills', 'certificats'],
+            relations: ['projects', 'skills', 'certificats', 'hobbies'],
         });
         if (!user){
             throw new Error(`User with ID ${id} not found`);
@@ -76,6 +77,7 @@ export class UsersService{
             projects: user.projects,
             skills: user.skills,
             certificats: user.certificats,
+            hobbies: user.hobbies,
         }
         return userDto;
     }
