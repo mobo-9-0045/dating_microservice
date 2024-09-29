@@ -10,6 +10,11 @@ import { User } from 'src/users/user.entity';
 export class HobbieService {
   constructor(@InjectRepository(Hobbie) private hobbieRepository: Repository<Hobbie>){}
 
+
+  async findById(id: number): Promise<Hobbie | null>{
+    return this.hobbieRepository.findOne({where: {id}, relations: ['user']});
+  }
+
   async findAll(): Promise<Hobbie[]>{
     return this.hobbieRepository.find();
   }
