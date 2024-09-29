@@ -10,7 +10,7 @@ import { GoogleStrategy } from './google.strategy';
     UsersModule,
     JwtModule.register({
       global: true,
-      secret: "JWT SUPER SECRET",
+      secret: process.env.JWTSUPPERSECRETKEY,
       signOptions: {expiresIn: '24h'}
     }),
   ],
